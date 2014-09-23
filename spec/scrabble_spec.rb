@@ -123,6 +123,19 @@ describe Player do
     end
   end
 
+  describe "#play(word)"do
+    it "returns play array"do
+      expect(Player.new("name").play("blah")).to eq ["blah"]
+    end
 
+    context "when player has won"do
+      it "returns false" do
+        test = Player.new("name")
+        test.play("ZZZZ")
+        expect(test.play("ZZZZZZZZ")).to eq false
+      end
+    end
+  end
+    
 end
 

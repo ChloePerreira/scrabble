@@ -56,10 +56,11 @@ class Scrabble
 end
 
 class Player
-  attr_accessor :name
+  attr_accessor :name, :score, :name
   def initialize(name)
     @name = name
     @score = 0
+    @plays = []
   end
 
   def total_score(array)
@@ -71,8 +72,17 @@ class Player
   end
 
   def won?
-    if @score > 100
+    if total_score(@plays) > 100
       true
+    else
+      false
+    end
+  end
+
+  def play(word)
+    @plays.push(word)
+    if total_score(@plays)<100
+      @plays
     else
       false
     end
